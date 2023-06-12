@@ -23,10 +23,8 @@ public class User : Entity<int>
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
     public UserType UserType { get; set; }
-    public Animal Animal { get; set; }
-  
-
-    
+    public Animal? Animal { get; set; }
+    public Advert? Advert { get; set; }
 }
 
 public enum UserType
