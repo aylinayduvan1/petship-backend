@@ -27,7 +27,7 @@ public class User : Entity<int>
 
     
 }
-//yorum satırı
+//yorum satırı 
 public enum UserType
 {
     Admin,
