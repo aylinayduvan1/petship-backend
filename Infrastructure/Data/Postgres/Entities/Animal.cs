@@ -13,9 +13,10 @@ public class Animal : Entity<int>
     public string animal_type { get; set; } = default!;
     public Boolean animal_passion { get; set; };
 
+   // deneme 
 
 
-   
+
 
 }
 

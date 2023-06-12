@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Data.Postgres.Entities.Base;
+using Infrastructure.Data.Postgres.Entities.Infrastructure.Data.Postgres.Entities;
 
 namespace Infrastructure.Data.Postgres.Entities;
 
@@ -31,5 +32,5 @@ public class User : Entity<int>
 public enum UserType
 {
     Admin,
-    User,
+    User, 
 }
