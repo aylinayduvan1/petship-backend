@@ -16,7 +16,7 @@ namespace Infrastructure.Data.Postgres.Entities
 
         //db'de date'i int girmişiz ?
         public DateTime message_date { get; set; } = default!;
-        public Boolean message_status { get; set; }
+        public bool message_status { get; set; }
 
 
     }
