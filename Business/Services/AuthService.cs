@@ -53,6 +53,39 @@ public class AuthService : IAuthService
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
 
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.Password == registerDto.Password) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_adress == registerDto.user_adress) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_bdate == registerDto.user_bdate) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_gsm == registerDto.user_gsm) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_sex == registerDto.user_sex) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_surname == registerDto.user_surname) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.animal_exist == registerDto.animal_exist) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+
+        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.animal_history == registerDto.animal_history) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+                status: ResultStatus.Invalid);
+
+
         var user = _mapperHelper.Map<User>(registerDto);
 
         _hashingHelper.CreatePasswordHash(registerDto.Password, out var passwordHash, out var passwordSalt);
@@ -85,7 +118,7 @@ public class AuthService : IAuthService
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: validationError, status: ResultStatus.Invalid);
         }
 
-        var user = await _unitOfWork.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.UserName);
+        var user = await _unitOfWork.Users.FirstOrDefaultAsync(x => x.Email == loginDto.Email);
 
         if (user == null || !_hashingHelper.VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt))
         {

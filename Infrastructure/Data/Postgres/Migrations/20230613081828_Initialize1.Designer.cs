@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Data.Postgres.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    partial class PostgresContextModelSnapshot : ModelSnapshot
+    [Migration("20230613081828_Initialize1")]
+    partial class Initialize1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,16 +126,8 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -144,10 +139,6 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("UserType")
                         .HasColumnType("integer");
@@ -172,7 +163,19 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("user_fullname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("user_gsm")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("user_mail")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("user_nickname")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -180,20 +183,16 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("character(1)[]");
 
-                    b.Property<string>("user_surname")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AdvertId");
 
                     b.HasIndex("AnimalId");
 
-                    b.HasIndex("Email")
+                    b.HasIndex("user_fullname")
                         .IsUnique();
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("user_mail")
                         .IsUnique();
 
                     b.ToTable("User");

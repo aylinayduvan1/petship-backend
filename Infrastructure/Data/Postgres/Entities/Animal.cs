@@ -1,6 +1,6 @@
 ﻿using System;
 using Infrastructure.Data.Postgres.Entities.Base;
-using Infrastructure.Data.Postgres.Entities.Infrastructure.Data.Postgres.Entities;
+//using Infrastructure.Data.Postgres.Entities.Infrastructure.Data.Postgres.Entities;
 
 namespace Infrastructure.Data.Postgres.Entities;
 

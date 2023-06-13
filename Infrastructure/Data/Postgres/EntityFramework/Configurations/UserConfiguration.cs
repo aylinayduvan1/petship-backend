@@ -13,7 +13,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasIndex(x => x.Email).IsUnique();
         builder.Property(x => x.UserName).IsRequired();
         builder.HasIndex(x => x.UserName).IsUnique();
-        builder.Property(x => x.FullName).IsRequired();
+        //builder.Property(x => x.FullName).IsRequired();
         builder.Property(x => x.PasswordHash).IsRequired();
         builder.Property(x => x.PasswordSalt).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
