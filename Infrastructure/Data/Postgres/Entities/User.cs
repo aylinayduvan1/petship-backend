@@ -25,6 +25,7 @@ public class User : Entity<int>
     public UserType UserType { get; set; }
     public Animal? Animal { get; set; }
     public Advert? Advert { get; set; }
+    public Message? Message { get; set; }
 }
 
 public enum UserType
