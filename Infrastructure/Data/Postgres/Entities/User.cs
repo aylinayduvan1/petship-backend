@@ -10,7 +10,7 @@ public class User : Entity<int>
     public string UserName { get; set; } = default!;
     public string Password { get; set; }
     public string user_surname { get; set; } = default!;
-    public string user_bdate { get; set; } = default!;
+    public string user_bdate { get; set; }
     public string user_adress { get; set; } = default!;
     public char[] user_sex { get; set; } = default!;
     public string Email { get; set; } = default!;

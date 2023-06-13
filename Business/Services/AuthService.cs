@@ -61,6 +61,7 @@ public class AuthService : IAuthService
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_adress == registerDto.user_adress) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
+
          if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_bdate == registerDto.user_bdate) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
