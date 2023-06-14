@@ -19,6 +19,8 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.animal_year).IsRequired();
             builder.Property(x => x.animal_sex).IsRequired().HasMaxLength(1);
             builder.Property(x => x.animal_type).IsRequired();
+            builder.Property(x => x.animal_img).IsRequired();
+
         }
     }
 }
