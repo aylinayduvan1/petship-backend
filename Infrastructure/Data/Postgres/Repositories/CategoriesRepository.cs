@@ -21,6 +21,10 @@ namespace Infrastructure.Data.Postgres.Repositories
         {
             throw new NotImplementedException();
         }
-        
+
+        public Task<Categories> GetWithPropertiesAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
