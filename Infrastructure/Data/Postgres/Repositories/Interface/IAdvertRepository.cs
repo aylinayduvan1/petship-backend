@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Infrastructure.Data.Postgres.Entities;
+using Infrastructure.Data.Postgres.Repositories.Base.Interface;
 
 namespace Infrastructure.Data.Postgres.Repositories.Interface
 {
-    internal interface IAdvertRepository
+    public interface IAdvertRepository : IRepository<Advert, int>
     {
+        Task<Advert> GetAdvertById(int id);
     }
 }
