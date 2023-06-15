@@ -14,7 +14,6 @@ Bu proje, hayvan sahiplendirme konusunda yazılmış bir web sitesinin backend t
 ## Teknolojiler
 
 - **Programlama Dili**: Proje, **.net** ve **Angular** programlama dili kullanılarak geliştirilmektedir.
--
 - **Veritabanı**: Veri depolama için **PostgreSQL** veritabanı yönetim sistemi kullanılacaktır.
 - **API'ler**: Apiler daha belirlenmemiş olmakla birlikte ileride çeşitli güncellemelerle kullanıcı dostu eklentiler entegre edilecektir.
 
