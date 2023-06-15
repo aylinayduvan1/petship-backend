@@ -32,5 +32,10 @@ namespace Infrastructure.Data.Postgres.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task<IList<Categories>> GetWithCategoriesAsync(bool category_nımg)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
