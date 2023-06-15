@@ -20,11 +20,11 @@ namespace Infrastructure.Data.Postgres.Repositories
         }
         public async Task<IList<Advert>> GetAdvertByIdAsync(int id)
         {
-            return (IList<Advert>)await PostgresContext.Advert
-            .Include(a => a.advert_no) // İlişkili "Properties" tablosunu dahil etmek için Include kullanılır.
-            .FirstOrDefaultAsync(a => a.Id == id);
+            return await PostgresContext.Set<Advert>()
+                .Include(Advert => Advert.Id)
+                .Where(Advert => Advert.Id == id)
+                .ToListAsync();
         }
 
-      
     }
 }
