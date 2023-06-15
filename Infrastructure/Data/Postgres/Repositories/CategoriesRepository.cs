@@ -23,8 +23,8 @@ namespace Infrastructure.Data.Postgres.Repositories
         public async Task<IList<Categories>> GetWithCategoriesAsync(int id)
         {
             return await PostgresContext.Categories
-                .Include(c => c.Id)
-                .Where(c => c.Id == id)
+                .Include(Categories=> Categories.Id)
+                .Where(Categories => Categories.Id == id)
                 .ToListAsync();
         }
 
