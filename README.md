@@ -1,3 +1,25 @@
+# Animal Adoption Project
+
+## Project Description
+This project encompasses the backend part of a web application focused on animal adoption. It involves various entities and table information related to the domain. The main objective of the project is to address the issue of pet adoption by considering the health conditions of stray animals and overcoming the lack of qualified websites and widespread awareness among people.
+
+## Features
+
+1. **User Management**: Users can register, login, and update their profile information on the website.
+2. **Animals**: The project stores information about animals eligible for adoption. Details such as species, breed, age, and health status are recorded for each animal.
+3. **Adoption Requests**: Users can create adoption requests for specific animals. The requests can be accepted or rejected based on the suitability of the animal.
+4. **Communication**: Users can communicate through the website, ask questions, and provide feedback.
+5. **Admin Panel**: Administrators have access to the backend administration of the website. They can manage animal information, users, adoption requests, and other important data.
+
+## Technologies
+
+- **Programming Languages**: The project is developed using **.NET** and **Angular** programming languages.
+- **Database**: The data will be stored using the **PostgreSQL** database management system.
+- **APIs**: Specific APIs have not been determined yet, but user-friendly extensions will be integrated in future updates.
+
+The overall goal of this project is to facilitate the animal adoption process, prioritize the health conditions of stray animals, and provide a suitable platform for people.
+
+
 # Hayvan Sahiplendirme Projesi
 
 ## Proje Tanımı
