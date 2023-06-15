@@ -2,7 +2,7 @@
 
 ## Project Description
 This project encompasses the backend part of a web application focused on animal adoption. It involves various entities and table information related to the domain. The main objective of the project is to address the issue of pet adoption by considering the health conditions of stray animals and overcoming the lack of qualified websites and widespread awareness among people.
-
+___
 ## Features
 
 1. **User Management**: Users can register, login, and update their profile information on the website.
@@ -10,7 +10,7 @@ This project encompasses the backend part of a web application focused on animal
 3. **Adoption Requests**: Users can create adoption requests for specific animals. The requests can be accepted or rejected based on the suitability of the animal.
 4. **Communication**: Users can communicate through the website, ask questions, and provide feedback.
 5. **Admin Panel**: Administrators have access to the backend administration of the website. They can manage animal information, users, adoption requests, and other important data.
-
+___
 ## Technologies
 
 - **Programming Languages**: The project is developed using **.NET** and **Angular** programming languages.
@@ -19,12 +19,12 @@ This project encompasses the backend part of a web application focused on animal
 
 The overall goal of this project is to facilitate the animal adoption process, prioritize the health conditions of stray animals, and provide a suitable platform for people.
 
-
+---
 # Hayvan Sahiplendirme Projesi
 
 ## Proje Tanımı
 Bu proje, hayvan sahiplendirme konusunda yazılmış bir web sitesinin backend tarafını içermektedir. Projede çeşitli varlıklar (entityler) ve tablo bilgileri kullanılmaktadır. Projenin temel amacı, yeterli miktarda kalifiye web sitesi bulunmaması ve insanlar arasında yaygın olmaması nedeniyle sokaktaki hayvanların sağlık koşullarını gözeterek sahiplendirme sorununun üstesinden gelmektir.
-
+___
 ## Özellikler
 
 1. **Kullanıcı Yönetimi**: Kullanıcılar, web sitesine kayıt olabilir, giriş yapabilir ve profil bilgilerini güncelleyebilirler.
@@ -32,7 +32,7 @@ Bu proje, hayvan sahiplendirme konusunda yazılmış bir web sitesinin backend t
 3. **Sahiplendirme Talepleri**: Kullanıcılar, belirli bir hayvan için sahiplendirme talepleri oluşturabilirler. Talepler, hayvanın uygunluk durumuna bağlı olarak kabul edilebilir veya reddedilebilir.
 4. **İletişim**: Kullanıcılar, web sitesi üzerinden iletişim kurabilir, sorular sorabilir ve geri bildirimde bulunabilirler.
 5. **Yönetici Paneli**: Yöneticiler, web sitesinin backend yönetimini yapabilirler. Bu panelde hayvan bilgileri, kullanıcılar, sahiplendirme talepleri ve diğer önemli verileri yönetme yetkisine sahiptirler.
-
+___
 ## Teknolojiler
 
 - **Programlama Dili**: Proje, **.net** ve **Angular** programlama dili kullanılarak geliştirilmektedir.
