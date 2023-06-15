@@ -5,6 +5,6 @@ namespace Infrastructure.Data.Postgres.Repositories.Interface
 {
     public interface IAdvertRepository : IRepository<Advert, int>
     {
-        Task<Advert> GetAdvertByIdAsync(int id);
+        Task<IList<Advert>> GetAdvertByIdAsync(int id);
     }
 }
