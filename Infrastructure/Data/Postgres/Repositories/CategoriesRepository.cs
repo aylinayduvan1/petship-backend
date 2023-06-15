@@ -20,13 +20,14 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         }
 
-        public async Task <IList<Categories>> GetWithCategoriesAsync(int id)
+        public async Task<IList<Categories>> GetWithCategoriesAsync(int id)
         {
-            return (IList<Categories>)await PostgresContext.Categories
-            .Include(c => c.Id) // kategorilerin mutlaka isim içermesi gerekli...
-            .Where(Categories => Categories.Id == id)
-            .ToListAsync();
+            return await PostgresContext.Categories
+                .Include(c => c.Id)
+                .Where(c => c.Id == id)
+                .ToListAsync();
         }
+
 
         public Task<IList<Categories>> GetWithCategoriesAsync(string category_name)
         {
