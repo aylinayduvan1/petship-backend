@@ -24,16 +24,6 @@ namespace Infrastructure.Data.Postgres.Repositories
             // Belirli bir kullanıcıyı kimlik numarasına göre almak için bu metodu kullanabilirsiniz.
             return await _context.User.FindAsync(id);
         }
-        public async Task<List<User>> GetUsersByIdAsync(int id)
-        {
-            Expression<Func<User, bool>> filter = u => u.Id == id;
-            return await GetuserByFilterAsync(filter);
-        }
-
-        private Task<List<User>> GetuserByFilterAsync(Expression<Func<User, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<User> CreateUserAsync(User user)
         {
@@ -69,7 +59,5 @@ namespace Infrastructure.Data.Postgres.Repositories
             // Tüm kullanıcıları getirmek için bu metodu kullanabilirsiniz.
             return await _context.User.ToListAsync();
         }
-
     }
-
 }
