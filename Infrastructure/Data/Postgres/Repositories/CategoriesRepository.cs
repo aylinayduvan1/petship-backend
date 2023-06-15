@@ -2,6 +2,7 @@
 using Infrastructure.Data.Postgres.EntityFramework;
 using Infrastructure.Data.Postgres.Repositories.Base;
 using Infrastructure.Data.Postgres.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,23 @@ namespace Infrastructure.Data.Postgres.Repositories
 {
     public class CategoriesRepository : Repository<Categories, int>, ICategoriesRepository
     {
+        
+
         public CategoriesRepository(PostgresContext postgresContext) : base(postgresContext)
         {
 
         }
 
-        public Task<Categories> GetWithPropertiesAsync(string category_name)
+        public async Task<Categories> GetWithPropertiesAsync(string category_name)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Categories> GetWithPropertiesAsync(int id)
+        public async Task<Categories> GetWithPropertiesAsync(int id)
         {
-            throw new NotImplementedException();
+            return await PostgresContext.Categories
+            .Include(c => c.category_name) // İlişkili "Properties" tablosunu dahil etmek için Include kullanılır
+            .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

@@ -20,6 +20,15 @@ public class PostgresContext : DbContext
         
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
+        modelBuilder.ApplyConfiguration(new CategoriesConfiguration());
+        modelBuilder.ApplyConfiguration(new AnimalConfiguration());
+        modelBuilder.ApplyConfiguration(new AdvertConfiguration());
+
+
+        // repository içerisinde ki "PostgreContext özelliklerini kullanabilmemiz
+        // için öncelikle burada configurationsları modelbuilder ile override etmemiz gerekli
+        // daha sonrası aşağıda...."
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,4 +43,12 @@ public class PostgresContext : DbContext
 
     public DbSet<User> User => Set<User>();
     public DbSet<UserToken> UserTokens => Set<UserToken>();
+
+    public DbSet<Categories> Categories => Set<Categories>();
+
+    public DbSet<Animal> Animal => Set<Animal>();
+
+    public DbSet<Advert> Advert => Set<Advert>();
+
+    // daha sonra buradan objeleri set ediyoruz bu şekilde bu classın özelliklerini kullanabiliyoruz...
 }
