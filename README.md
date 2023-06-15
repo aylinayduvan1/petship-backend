@@ -21,7 +21,7 @@ The overall goal of this project is to facilitate the animal adoption process, p
 
 ---
 
-# <h1>Hayvan Sahiplendirme Projesi<h1>
+#<h1>Hayvan Sahiplendirme Projesi<h1>
 
 ## Proje Tanımı
 Bu proje, hayvan sahiplendirme konusunda yazılmış bir web sitesinin backend tarafını içermektedir. Projede çeşitli varlıklar (entityler) ve tablo bilgileri kullanılmaktadır. Projenin temel amacı, yeterli miktarda kalifiye web sitesi bulunmaması ve insanlar arasında yaygın olmaması nedeniyle sokaktaki hayvanların sağlık koşullarını gözeterek sahiplendirme sorununun üstesinden gelmektir.
