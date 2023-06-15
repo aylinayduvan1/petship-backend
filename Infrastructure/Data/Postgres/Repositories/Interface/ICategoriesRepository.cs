@@ -11,6 +11,6 @@ namespace Infrastructure.Data.Postgres.Repositories.Interface
     public interface ICategoriesRepository : IRepository<Categories,int>
     {
         Task <IList<Categories>> GetWithCategoriesAsync(string category_name);
-        Task<Categories> GetWithCategoriesAsync(int id);
+        Task <IList<Categories>> GetWithCategoriesAsync(int id);
     }
 }

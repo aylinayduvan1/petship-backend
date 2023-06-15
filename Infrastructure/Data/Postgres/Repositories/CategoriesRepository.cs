@@ -20,16 +20,17 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         }
 
-        public async  Task <Categories> GetWithCategoriesAsync(string category_name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task <IList<Categories>>GetWithCategoriesAsync(int id)
+        public async Task <IList<Categories>> GetWithCategoriesAsync(int id)
         {
             return (IList<Categories>)await PostgresContext.Categories
-            .Include(c => c.category_name) // kategorilerin mutlaka isim içermesi gerekli...
-            .FirstOrDefaultAsync(c => c.Id == id);
+            .Include(c => c.Id) // kategorilerin mutlaka isim içermesi gerekli...
+            .Where(Categories => Categories.Id == id)
+            .ToListAsync();
+        }
+
+        public Task<IList<Categories>> GetWithCategoriesAsync(string category_name)
+        {
+            throw new NotImplementedException();
         }
     }
 }
