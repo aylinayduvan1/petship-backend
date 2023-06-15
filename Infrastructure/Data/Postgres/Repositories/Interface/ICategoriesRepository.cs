@@ -10,9 +10,9 @@ namespace Infrastructure.Data.Postgres.Repositories.Interface
 {
     public interface ICategoriesRepository : IRepository<Categories,int>
     {
-        Task <IList<Categories>> GetWithCategoriesAsync(string category_name);
+       
         Task <IList<Categories>> GetWithCategoriesAsync(int id);
 
-        Task<IList<Categories>> GetWithCategoriesAsync(bool categories_ımg);
+        
     }
 }
