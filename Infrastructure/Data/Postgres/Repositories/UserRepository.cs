@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using SharpDX.Direct3D9;
+using System.Xml.Linq;
 
 namespace Infrastructure.Data.Postgres.Repositories
 {
@@ -19,11 +21,23 @@ namespace Infrastructure.Data.Postgres.Repositories
             _context = postgresContext;
         }
 
+        // IRepository<User, int> arabiriminden gelen GetAllAsync metodu uygulanıyor.
+        // Bu metot, tüm kullanıcıları getirmek için filtreleme seçeneği sağlar.
+        async Task<IList<User>> Base.Interface.IRepository<User, int>.GetAllAsync(Expression<Func<User, bool>>? filter)
+        {
+            var query = PostgresContext.Set<User>().Include(User => User.Id); // User tablosunu sorguya dahil ediyoruz.
+
+            return filter == null
+                ? await query.ToListAsync() // Filtre yoksa, tüm kullanıcıları getiriyoruz.
+                : await query.Where(filter).ToListAsync(); // Filtre varsa, filtreye uyan kullanıcıları getiriyoruz.
+        }
+
         public async Task<User> GetByIdAsync(int id)
         {
             // Belirli bir kullanıcıyı kimlik numarasına göre almak için bu metodu kullanabilirsiniz.
             return await _context.User.FindAsync(id);
         }
+
         public async Task<List<User>> GetUsersByIdAsync(int id)
         {
             Expression<Func<User, bool>> filter = u => u.Id == id;
@@ -34,7 +48,6 @@ namespace Infrastructure.Data.Postgres.Repositories
         {
             return await _context.User.Where(filter).ToListAsync();
         }
-
 
         public async Task<User> CreateUserAsync(User user)
         {
