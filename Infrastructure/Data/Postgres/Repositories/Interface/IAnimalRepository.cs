@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Postgres.Repositories.Interface
 {
-    internal interface IAnimalRepository
+    public interface IAnimalRepository : Repository<IAnimalRepository, string> , IAnimalRepository
     {
+        public IAnimalRepository(Postg)
     }
 }
