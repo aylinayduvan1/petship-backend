@@ -1,4 +1,4 @@
-# Animal Adoption Project
+# <h1>Animal Adoption Project<h1>
 
 ## Project Description
 This project encompasses the backend part of a web application focused on animal adoption. It involves various entities and table information related to the domain. The main objective of the project is to address the issue of pet adoption by considering the health conditions of stray animals and overcoming the lack of qualified websites and widespread awareness among people.
@@ -20,7 +20,8 @@ This project encompasses the backend part of a web application focused on animal
 The overall goal of this project is to facilitate the animal adoption process, prioritize the health conditions of stray animals, and provide a suitable platform for people.
 
 ---
-# Hayvan Sahiplendirme Projesi
+
+# <h1>Hayvan Sahiplendirme Projesi<h1>
 
 ## Proje Tanımı
 Bu proje, hayvan sahiplendirme konusunda yazılmış bir web sitesinin backend tarafını içermektedir. Projede çeşitli varlıklar (entityler) ve tablo bilgileri kullanılmaktadır. Projenin temel amacı, yeterli miktarda kalifiye web sitesi bulunmaması ve insanlar arasında yaygın olmaması nedeniyle sokaktaki hayvanların sağlık koşullarını gözeterek sahiplendirme sorununun üstesinden gelmektir.
