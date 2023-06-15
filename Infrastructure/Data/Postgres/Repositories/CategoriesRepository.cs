@@ -20,15 +20,15 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         }
 
-        public async Task<Categories> GetWithPropertiesAsync(string category_name)
+        public async Task<Categories> GetWithCategoriesAsync(string category_name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Categories> GetWithPropertiesAsync(int id)
+        public async Task<Categories> GetWithCategoriesAsync(int id)
         {
             return await PostgresContext.Categories
-            .Include(c => c.category_name) // İlişkili "Properties" tablosunu dahil etmek için Include kullanılır
+            .Include(c => c.category_name) // kategorilerin mutlaka isim içermesi gerekli...
             .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
