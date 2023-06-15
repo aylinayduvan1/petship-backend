@@ -14,10 +14,7 @@ namespace Infrastructure.Data.Postgres.Repositories
         {
 
         }
-        Task<IList<Advert>> IAdvertRepository.GetAdvertByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
         public async Task<IList<Advert>> GetAdvertByIdAsync(int id)
         {
             return await PostgresContext.Set<Advert>()
