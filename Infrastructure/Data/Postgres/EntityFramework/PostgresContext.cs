@@ -23,6 +23,7 @@ public class PostgresContext : DbContext
         modelBuilder.ApplyConfiguration(new CategoriesConfiguration());
         modelBuilder.ApplyConfiguration(new AnimalConfiguration());
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
+        modelBuilder.ApplyConfiguration(new ContactConfiguration());
 
 
         // repository içerisinde ki "PostgreContext özelliklerini kullanabilmemiz
@@ -49,6 +50,8 @@ public class PostgresContext : DbContext
     public DbSet<Animal> Animal => Set<Animal>();
 
     public DbSet<Advert> Advert => Set<Advert>();
+
+    public DbSet<Contact> Contact => Set<Contact>();
 
     // daha sonra buradan objeleri set ediyoruz bu şekilde bu classın özelliklerini kullanabiliyoruz...
 }

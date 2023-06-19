@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Data.Postgres.Repositories;
 
-public class AnimalRepository : Repository<User, int>, IAnimalRepository
+public class AnimalRepository : Repository<Animal, int>, IAnimalRepository
 {
     // AnimalRepository sınıfının yapıcı metodu
     public AnimalRepository(PostgresContext postgresContext) : base(postgresContext)

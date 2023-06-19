@@ -11,7 +11,7 @@ namespace Infrastructure.Data.Postgres.Repositories.Interface
     public interface IContactRepository : IRepository<Contact, int>
     {
 
-        Task<Contact> GetWithContactAsync(int id);
+        Task<IList<Contact>> GetWithContactAsync(int id);
 
 
     }
