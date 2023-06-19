@@ -1,12 +1,13 @@
 ﻿using Infrastructure.Data.Postgres.Entities;
+using Infrastructure.Data.Postgres.EntityFramework.Configurations.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Data.Postgres.EntityFramework.Configurations;
 
-public class UserConfiguration : IEntityTypeConfiguration<User>
+public class UserConfiguration : Configuration<User,int>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public override void Configure(EntityTypeBuilder<User> builder)
        
     {
         builder.HasKey(x => x.Id);

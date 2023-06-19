@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Data.Postgres.Entities;
+using Infrastructure.Data.Postgres.EntityFramework.Configurations.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
 {
-    public class CategoriesConfiguration : IEntityTypeConfiguration<Categories>
+    public class CategoriesConfiguration : Configuration<Categories,int>
     {
-        public void Configure(EntityTypeBuilder<Categories> builder)
+        public override void Configure(EntityTypeBuilder<Categories> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.category_name).IsRequired();

@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Data.Postgres.Entities;
+using Infrastructure.Data.Postgres.EntityFramework.Configurations.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SharpDX;
 
 namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
 {
-    public class AdvertConfiguration : IEntityTypeConfiguration<Advert>
+    public class AdvertConfiguration : Configuration<Advert,int>
     {
-        public void Configure(EntityTypeBuilder<Advert> builder)
+        public  override void Configure(EntityTypeBuilder<Advert> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.advert_no).IsRequired();

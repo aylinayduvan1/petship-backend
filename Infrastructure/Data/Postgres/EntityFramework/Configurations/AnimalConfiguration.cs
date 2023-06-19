@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Infrastructure.Data.Postgres.EntityFramework.Configurations.Base;
 
 namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
 {
-    public class  AnimalConfiguration : IEntityTypeConfiguration<Animal>
+    public class  AnimalConfiguration : Configuration<Animal,int>
     {
-        public void Configure(EntityTypeBuilder<Animal> builder)
+        public override void Configure(EntityTypeBuilder<Animal> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.animal_name).IsRequired();
