@@ -7,17 +7,16 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations;
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
+       
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.UserName).IsRequired();
         builder.Property(x => x.Password).IsRequired();
         builder.Property(x => x.user_surname).IsRequired();
         builder.HasIndex(x => x.user_surname).IsUnique();
-        builder.Property(x => x.user_adress).IsRequired();
+        
         builder.Property(x => x.user_sex).IsRequired().HasMaxLength(1);
-        builder.Property(x => x.Email).IsRequired();
-        builder.HasIndex(x => x.Email).IsUnique();
-        builder.Property(x => x.user_gsm).IsRequired();
+        
         builder.Property(x => x.animal_id).IsRequired();
         builder.Property(x => x.advert_id).IsRequired();
         builder.Property(x => x.PasswordSalt).IsRequired();
@@ -25,6 +24,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.IsDeleted).IsRequired();
 
+      
+        
         builder.HasOne(x => x.Animal)
             .WithMany()
             .HasForeignKey<User>(x => x.animal_id);
@@ -33,6 +34,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithMany()
             .HasForeignKey<User>(x => x.advert_id);
 
+        builder.HasOne(x => x.Contact)
+            .WithMany()
+            .HasForeignKey<User>(x=> x.contact_id)
 
         builder.Property(x => x.UserType)
             .IsRequired()

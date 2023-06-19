@@ -10,6 +10,7 @@ namespace Infrastructure.Data.Postgres.Entities
 	{
 		public string Adress { get; set; }
 		public string gsm { get; set; }
+        public string Email { get; set; } = default!;
 
-	}
+    }
 }

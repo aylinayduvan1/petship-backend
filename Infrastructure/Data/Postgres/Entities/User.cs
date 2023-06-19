@@ -11,14 +11,12 @@ public class User : Entity<int>
     public string Password { get; set; }
     public string user_surname { get; set; } = default!;
     public string user_bdate { get; set; }
-    public string user_adress { get; set; } = default!;
     public char[] user_sex { get; set; } = default!;
-    public string Email { get; set; } = default!;
-    public string user_gsm { get; set; } = default!;
     public bool animal_history { get; set; }
     public bool animal_exist { get; set; }
     public int animal_id { get; set; } = default!;
     public int advert_id { get; set; } = default!;
+    public int contact_id { get; set; } = default!;
 
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
@@ -26,6 +24,7 @@ public class User : Entity<int>
     public UserType UserType { get; set; }
     public Animal? Animal { get; set; }
     public Advert? Advert { get; set; }
+    public Contact? Contact { get; set; }
 }
 
 public enum UserType
