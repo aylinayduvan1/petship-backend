@@ -26,12 +26,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.IsDeleted).IsRequired();
 
         builder.HasOne(x => x.Animal)
-            .WithOne()
+            .WithMany()
             .HasForeignKey<User>(x => x.animal_id);
 
         builder.HasOne(x => x.Advert)
-            .WithOne()
+            .WithMany()
             .HasForeignKey<User>(x => x.advert_id);
+
 
         builder.Property(x => x.UserType)
             .IsRequired()
