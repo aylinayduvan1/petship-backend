@@ -25,19 +25,20 @@ public class UserConfiguration : Configuration<User,int>
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.IsDeleted).IsRequired();
 
-      
-        
+
+
         builder.HasOne(x => x.Animal)
-            .WithMany()
-            .HasForeignKey<User>(x => x.animal_id);
+                .WithMany()
+                .HasForeignKey(x => x.animal_id);
 
         builder.HasOne(x => x.Advert)
-            .WithMany()
-            .HasForeignKey<User>(x => x.advert_id);
+               .WithMany()
+               .HasForeignKey(x => x.advert_id);
 
         builder.HasOne(x => x.Contact)
-            .WithMany()
-            .HasForeignKey<User>(x=> x.contact_id)
+               .WithMany()
+               .HasForeignKey(x => x.contact_id);
+
 
         builder.Property(x => x.UserType)
             .IsRequired()
