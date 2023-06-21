@@ -27,15 +27,15 @@ public class UserConfiguration : Configuration<User,int>
 
 
 
-        builder.HasOne(x => x.User)
+        builder.HasOne(x => x.Animal)
                 .WithMany()
                 .HasForeignKey(x => x.animal_id);
 
-        builder.HasOne(x => x.User)
+        builder.HasOne(x => x.Advert)
                .WithMany()
                .HasForeignKey(x => x.advert_id);
 
-        builder.HasOne(x => x.User)
+        builder.HasOne(x => x.Contact)
                .WithMany()
                .HasForeignKey(x => x.contact_id);
 

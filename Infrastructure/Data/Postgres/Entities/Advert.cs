@@ -14,6 +14,7 @@ namespace Infrastructure.Data.Postgres.Entities
         public string advert_date { get; set; } = default!;
         public string advert_title { get; set; } = default!;
         public string advert_text { get; set; } = default!;
+        public bool situation { get; set; }
 
     }
 }

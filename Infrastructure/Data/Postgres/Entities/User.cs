@@ -18,6 +18,8 @@ public class User : Entity<int>
     public int animal_id { get; set; } = default!;
     public int advert_id { get; set; } = default!;
     public int contact_id { get; set; } = default!;
+   
+   
 
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
