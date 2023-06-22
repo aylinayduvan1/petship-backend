@@ -58,7 +58,7 @@ public class AuthService : IAuthService
                 status: ResultStatus.Invalid);
 
 
-        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_adress == registerDto.user_adress) != null)
+        if (await _unitOfWork.Contacts.FirstOrDefaultAsync(u => u.Adress == registerDto.user_adress) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
 
@@ -66,7 +66,7 @@ public class AuthService : IAuthService
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
 
-        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_gsm == registerDto.user_gsm) != null)
+        if (await _unitOfWork.Contacts.FirstOrDefaultAsync(u => u.gsm == registerDto.user_gsm) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
 

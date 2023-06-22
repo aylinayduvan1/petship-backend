@@ -14,8 +14,7 @@ public class ContactConfiguration : Configuration<Contact,int>
         
         builder.Property(x => x.Adress).IsRequired();
         
-        builder.Property(x => x.Email).IsRequired();
-        builder.HasIndex(x => x.Email).IsUnique();
+       
 
         builder.Property(x => x.gsm).IsRequired();
 

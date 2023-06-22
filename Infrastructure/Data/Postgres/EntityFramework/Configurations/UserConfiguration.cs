@@ -15,7 +15,9 @@ public class UserConfiguration : Configuration<User,int>
         builder.Property(x => x.Password).IsRequired();
         builder.Property(x => x.user_surname).IsRequired();
         builder.HasIndex(x => x.user_surname).IsUnique();
-        
+        builder.Property(x => x.Email).IsRequired();
+        builder.HasIndex(x => x.Email).IsUnique();
+
         builder.Property(x => x.user_sex).IsRequired().HasMaxLength(1);
         
         builder.Property(x => x.animal_id).IsRequired();
@@ -24,6 +26,8 @@ public class UserConfiguration : Configuration<User,int>
         builder.Property(x => x.PasswordHash).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.IsDeleted).IsRequired();
+        builder.Property(x => x.user_img).IsRequired();
+
 
 
 

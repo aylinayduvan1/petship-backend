@@ -25,12 +25,13 @@ public class UnitOfWork : IUnitOfWork
 
     public IUserRepository Users => _userRepository ??= new UserRepository(_postgresContext);
     public IUserTokenRepository UserTokens => _userTokenRepository ??= new UserTokenRepository(_postgresContext);
-    public IAdvertRepository Advert => _advertRepository ??= new AdvertRepository(_postgresContext);
-    public IAnimalRepository Animal => _animalRepository ??= new AnimalRepository(_postgresContext);
     public ICategoriesRepository Categories => _categoriesRepository ??= new CategoriesRepository(_postgresContext);
-    public IContactRepository Contact => _contactRepository ??= new ContactRepository(_postgresContext);
 
-   
+    public IContactRepository Contacts => _contactRepository ??= new ContactRepository(_postgresContext);
+
+    public IAnimalRepository Animals => _animalRepository ??= new AnimalRepository(_postgresContext);
+
+    public IAdvertRepository Adverties => _advertRepository ??= new AdvertRepository(_postgresContext);
 
     public async Task<int> CommitAsync()
     {

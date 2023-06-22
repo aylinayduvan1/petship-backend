@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230613111248_Initialize3")]
-    partial class Initialize3
+    [Migration("20230622140155_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,13 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("situation")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("advert_no")
+                        .IsUnique();
 
                     b.ToTable("Advert");
                 });
@@ -82,6 +88,10 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<bool>("animal_chip")
                         .HasColumnType("boolean");
 
+                    b.Property<byte[]>("animal_img")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
                     b.Property<string>("animal_name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -91,7 +101,8 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.Property<string>("animal_sex")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(1)
+                        .HasColumnType("character varying(1)");
 
                     b.Property<string>("animal_type")
                         .IsRequired()
@@ -109,7 +120,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.ToTable("Animal");
                 });
 
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Categories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,11 +128,65 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AdvertId")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte[]>("category_img")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("category_name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    b.Property<int?>("AnimalId")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("gsm")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contact");
+                });
+
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -152,8 +217,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserType")
-                        .HasColumnType("integer");
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("advert_id")
                         .HasColumnType("integer");
@@ -167,19 +233,20 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<int>("animal_id")
                         .HasColumnType("integer");
 
-                    b.Property<string>("user_adress")
+                    b.Property<int>("contact_id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("user_bdate")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("user_bdate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("user_gsm")
+                    b.Property<byte[]>("user_img")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("bytea");
 
                     b.Property<char[]>("user_sex")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("character(1)[]");
 
                     b.Property<string>("user_surname")
@@ -188,14 +255,16 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdvertId");
-
-                    b.HasIndex("AnimalId");
-
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("advert_id");
+
+                    b.HasIndex("animal_id");
+
+                    b.HasIndex("contact_id");
+
+                    b.HasIndex("user_surname")
                         .IsUnique();
 
                     b.ToTable("User");
@@ -223,15 +292,27 @@ namespace Infrastructure.Data.Postgres.Migrations
                 {
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Advert", "Advert")
                         .WithMany()
-                        .HasForeignKey("AdvertId");
+                        .HasForeignKey("advert_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Animal", "Animal")
                         .WithMany()
-                        .HasForeignKey("AnimalId");
+                        .HasForeignKey("animal_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.Contact", "Contact")
+                        .WithMany()
+                        .HasForeignKey("contact_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Advert");
 
                     b.Navigation("Animal");
+
+                    b.Navigation("Contact");
                 });
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.UserToken", b =>
