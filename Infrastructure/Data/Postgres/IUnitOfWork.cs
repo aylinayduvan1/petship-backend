@@ -6,8 +6,11 @@ public interface IUnitOfWork : IDisposable
 {
     IUserRepository Users { get; }
     IUserTokenRepository UserTokens { get; }
+    IContactRepository Contacts { get; }
+    ICategoriesRepository Categories { get; }
+    IAnimalRepository Animals { get; }
+    IAdvertRepository Adverties { get; }
 
-   
-
+  
     Task<int> CommitAsync();
 }
