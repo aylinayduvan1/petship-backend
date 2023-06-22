@@ -100,13 +100,12 @@ namespace Infrastructure.Data.Postgres.Migrations
                     Password = table.Column<string>(type: "text", nullable: false),
                     user_surname = table.Column<string>(type: "text", nullable: false),
                     user_bdate = table.Column<string>(type: "text", nullable: false),
-                    user_img = table.Column<byte[]>(type: "bytea", nullable: false),
                     user_sex = table.Column<char[]>(type: "character(1)[]", maxLength: 1, nullable: false),
                     animal_history = table.Column<bool>(type: "boolean", nullable: false),
                     animal_exist = table.Column<bool>(type: "boolean", nullable: false),
-                    animal_id = table.Column<int>(type: "integer", nullable: false),
-                    advert_id = table.Column<int>(type: "integer", nullable: false),
-                    contact_id = table.Column<int>(type: "integer", nullable: false),
+                    animal_id = table.Column<int>(type: "integer", nullable: true),
+                    advert_id = table.Column<int>(type: "integer", nullable: true),
+                    contact_id = table.Column<int>(type: "integer", nullable: true),
                     PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
                     UserType = table.Column<string>(type: "text", nullable: false),
@@ -121,20 +120,17 @@ namespace Infrastructure.Data.Postgres.Migrations
                         name: "FK_User_Advert_advert_id",
                         column: x => x.advert_id,
                         principalTable: "Advert",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_User_Animal_animal_id",
                         column: x => x.animal_id,
                         principalTable: "Animal",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_User_Contact_contact_id",
                         column: x => x.contact_id,
                         principalTable: "Contact",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

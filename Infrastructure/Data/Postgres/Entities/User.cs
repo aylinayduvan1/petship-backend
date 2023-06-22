@@ -12,13 +12,12 @@ public class User : Entity<int>
     public string Password { get; set; }
     public string user_surname { get; set; } = default!;
     public string user_bdate { get; set; }
-    public byte[] user_img { get; set; }
     public char[] user_sex { get; set; } = default!;
     public bool animal_history { get; set; }
     public bool animal_exist { get; set; }
-    public int animal_id { get; set; } = default!;
-    public int advert_id { get; set; } = default!;
-    public int contact_id { get; set; } = default!;
+    public int? animal_id { get; set; } = default!;
+    public int? advert_id { get; set; } = default!;
+    public int? contact_id { get; set; } = default!;
    
    
 

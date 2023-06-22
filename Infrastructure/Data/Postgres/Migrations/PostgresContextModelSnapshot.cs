@@ -218,7 +218,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("advert_id")
+                    b.Property<int?>("advert_id")
                         .HasColumnType("integer");
 
                     b.Property<bool>("animal_exist")
@@ -227,19 +227,15 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<bool>("animal_history")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("animal_id")
+                    b.Property<int?>("animal_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("contact_id")
+                    b.Property<int?>("contact_id")
                         .HasColumnType("integer");
 
                     b.Property<string>("user_bdate")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<byte[]>("user_img")
-                        .IsRequired()
-                        .HasColumnType("bytea");
 
                     b.Property<char[]>("user_sex")
                         .IsRequired()
@@ -289,21 +285,15 @@ namespace Infrastructure.Data.Postgres.Migrations
                 {
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Advert", "Advert")
                         .WithMany()
-                        .HasForeignKey("advert_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("advert_id");
 
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Animal", "Animal")
                         .WithMany()
-                        .HasForeignKey("animal_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("animal_id");
 
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Contact", "Contact")
                         .WithMany()
-                        .HasForeignKey("contact_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("contact_id");
 
                     b.Navigation("Advert");
 
