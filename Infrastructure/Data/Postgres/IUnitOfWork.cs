@@ -6,7 +6,6 @@ public interface IUnitOfWork : IDisposable
 {
     IUserRepository Users { get; }
     IUserTokenRepository UserTokens { get; }
-    IContactRepository Contacts { get; }
 
    
 
