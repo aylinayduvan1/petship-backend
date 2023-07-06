@@ -1,4 +1,5 @@
 ﻿using Business.Services;
+using Business.Services.Base.Interface;
 using Business.Services.Interface;
 using Business.Utilities.Mapping;
 using Business.Utilities.Mapping.Interface;
@@ -18,6 +19,7 @@ public static class DependencyInjection
         serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
         serviceCollection.AddScoped<IClaimHelper, ClaimHelper>();
         serviceCollection.AddScoped<IAuthService, AuthService>();
+        serviceCollection.AddScoped<IUserService, UserService>();
     }
 
     public static void AddMySingleton(this IServiceCollection serviceCollection)
