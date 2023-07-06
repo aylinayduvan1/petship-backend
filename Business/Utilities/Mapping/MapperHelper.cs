@@ -15,6 +15,7 @@ public class MapperHelper : IMapperHelper
             new Profiles()
         };
 
+
         var config = new MapperConfiguration(config =>
         {
             foreach (var profile in profiles)
@@ -29,5 +30,10 @@ public class MapperHelper : IMapperHelper
     public TDestination Map<TDestination>(object? source)
     {
         return _mapper.Map<TDestination>(source);
+    }
+
+    public void Map(object? source, object? destination)
+    {
+        throw new NotImplementedException();
     }
 }

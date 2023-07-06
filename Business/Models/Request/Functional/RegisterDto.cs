@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Data.Postgres.Entities;
 
-namespace Business.Models.Request;
+namespace Business.Models.Request.Functional;
 
 public class RegisterDto
 {

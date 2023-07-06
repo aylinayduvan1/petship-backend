@@ -8,6 +8,8 @@ public interface IRepository<TEntity, in TId> where TEntity : class
 {
     Task AddAsync(TEntity entity);
     // Belirtilen `entity` nesnesini veritabanına ekler.
+    Task<TEntity> GetByIdAsync(TId id);
+
 
     Task AddRangeAsync(IEnumerable<TEntity> entities);
     //Belirtilen `entities` koleksiyonundaki nesneleri veritabanına toplu olarak ekler.
@@ -24,6 +26,13 @@ public interface IRepository<TEntity, in TId> where TEntity : class
     Task<int> GetCountAsync(Expression<Func<TEntity, bool>>? filter = null);
     // Veritabanında belirtilen `filter` ifadesine uygun olan öğelerin sayısını döndürür. Opsiyonel olarak bir `filter` ifadesi belirtilmezse, veritabanındaki tüm öğelerin sayısını döndürür.
 
+
+    
+    Task RemoveAsync(TEntity entity);
+    Task RemoveByIdAsync(TId id);
+    
+    
+    
     void Remove(TEntity entity);
     void RemoveById(TId id);
     // Belirtilen `id` değerine sahip nesneyi veritabanından kaldırır.

@@ -1,4 +1,4 @@
-﻿using Business.Models.Request;
+﻿using Business.Models.Request.Functional;
 using FluentValidation;
 using System;
 using System.Globalization;
