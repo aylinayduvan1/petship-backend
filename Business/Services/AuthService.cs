@@ -54,7 +54,7 @@ public class AuthService : IAuthService
                 status: ResultStatus.Invalid);
 
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.Password == registerDto.Password) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.PasswordWrong,
                 status: ResultStatus.Invalid);
 
 
@@ -63,27 +63,27 @@ public class AuthService : IAuthService
                 status: ResultStatus.Invalid);
 
          if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_bdate == registerDto.user_bdate) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.BdtaWrong,
                 status: ResultStatus.Invalid);
 
         if (await _unitOfWork.Contacts.FirstOrDefaultAsync(u => u.gsm == registerDto.user_gsm) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.GsmWrong,
                 status: ResultStatus.Invalid);
 
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_sex == registerDto.user_sex) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.SexWrong,
                 status: ResultStatus.Invalid);
 
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.user_surname == registerDto.user_surname) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.animal_exist == registerDto.animal_exist) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.animalExistwrong,
                 status: ResultStatus.Invalid);
 
 
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.animal_history == registerDto.animal_history) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.animalHistoryWrong,
                 status: ResultStatus.Invalid);
 
 

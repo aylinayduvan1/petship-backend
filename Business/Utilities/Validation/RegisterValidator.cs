@@ -29,10 +29,6 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
         RuleFor(x => x.user_gsm).NotEmpty().WithName("Telefon Numarası").MinimumLength(8);
 
 
-        RuleFor(x => x.user_sex)
-        .Must(x => x.Length == 1 && (x[0] == 'k' || x[0] == 'K' || x[0] == 'e' || x[0] == 'E')).WithMessage("Geçersiz cinsiyet değeri.")
-        .WithName("Cinsiyet");
-
 
         RuleFor(x => x.animal_history)
          .Must(x => x == false || x == true).WithMessage("Geçersiz hayvan geçmişi değeri.")

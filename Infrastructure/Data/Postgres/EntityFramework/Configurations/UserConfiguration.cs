@@ -18,6 +18,9 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.HasIndex(x => x.Email).IsUnique();
 
             builder.Property(x => x.user_sex).IsRequired().HasMaxLength(1);
+            builder.Property(x => x.animal_exist).IsRequired();
+            builder.Property(x => x.animal_history).IsRequired();
+
 
             builder.Property(x => x.animal_id).IsRequired(false);
             builder.Property(x => x.advert_id).IsRequired(false);

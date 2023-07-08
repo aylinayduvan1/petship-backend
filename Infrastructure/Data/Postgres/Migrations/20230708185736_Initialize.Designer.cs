@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230622184520_Initialize")]
+    [Migration("20230708185736_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -240,10 +240,10 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<char[]>("user_sex")
+                    b.Property<string>("user_sex")
                         .IsRequired()
                         .HasMaxLength(1)
-                        .HasColumnType("character(1)[]");
+                        .HasColumnType("character varying(1)");
 
                     b.Property<string>("user_surname")
                         .IsRequired()
