@@ -1,4 +1,4 @@
-﻿using Business.Models.Request;
+﻿using Business.Models.Request.Functional;
 using Business.Models.Response;
 using Business.Services.Interface;
 using Business.Utilities.Mapping.Interface;
@@ -45,13 +45,17 @@ public class AuthService : IAuthService
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: validationError,
                 status: ResultStatus.Invalid);
 
-        if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.UserName == registerDto.UserName) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.UserNameAlreadyTaken,
-                status: ResultStatus.Invalid);
-
         if (await _unitOfWork.Users.FirstOrDefaultAsync(u => u.Email == registerDto.Email) != null)
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.EmailAlreadyTaken,
                 status: ResultStatus.Invalid);
+
+
+        if (await _unitOfWork.Contacts.FirstOrDefaultAsync(u => u.gsm == registerDto.user_gsm) != null)
+            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.GsmWrong,
+                status: ResultStatus.Invalid);
+
+    
+      
 
         var user = _mapperHelper.Map<User>(registerDto);
 
@@ -85,7 +89,7 @@ public class AuthService : IAuthService
             return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: validationError, status: ResultStatus.Invalid);
         }
 
-        var user = await _unitOfWork.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.UserName);
+        var user = await _unitOfWork.Users.FirstOrDefaultAsync(x => x.Email == loginDto.Email);
 
         if (user == null || !_hashingHelper.VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt))
         {

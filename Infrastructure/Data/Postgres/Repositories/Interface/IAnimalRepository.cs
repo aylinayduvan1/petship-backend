@@ -3,7 +3,7 @@ using Infrastructure.Data.Postgres.Repositories.Base.Interface;
 
 namespace Infrastructure.Data.Postgres.Repositories.Interface;
 
-public interface IUserRepository : IRepository<User, int>
+public interface IAnimalRepository : IRepository<Animal, int>
 {
-    Task<User> GetByIdAsync(int id);
+    Task<Animal> GetByIdAsync(int id);
 }
