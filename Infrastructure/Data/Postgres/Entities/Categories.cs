@@ -10,6 +10,6 @@ namespace Infrastructure.Data.Postgres.Entities
     public class Categories : Entity<int>
     {
         public string category_name { get; set; } = default!;
-        public byte[] category_img { get; set; }
+        public string category_img { get; set; } = default!;
     }
 }

@@ -14,10 +14,11 @@ public class Profiles : AutoMapper.Profile
         CreateMap<User, UserProfileDto>();
         CreateMap<Advert, AdvertInfoDTO>();
         //eklenenler
-        CreateMap<Advert, AdvertCreateDTO>();
-        CreateMap<Advert, AdvertUpdateDTO>();
-        CreateMap<Categories, CategoryCreateDTO>();
-        CreateMap<Categories, CategoryUpdateDTO>();
+        CreateMap<AdvertCreateDTO, Advert>();
+        CreateMap<AdvertUpdateDTO, Advert>();
+        CreateMap<CategoryCreateDTO,Categories>();
+        CreateMap<CategoryUpdateDTO,Categories >();
+        CreateMap<CategoryInfoDTO, Categories>();
 
     }
 }
