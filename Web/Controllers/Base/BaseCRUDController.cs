@@ -1,4 +1,5 @@
 ﻿using Business.Services.Base.Interface;
+using Business.Services.Interface;
 using Core.Results;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,10 @@ public abstract class BaseCRUDController<TEntity, TId, TCreateDTO, TUpdateDTO, T
     where TResponseDto : class
 {
     protected readonly IBaseService<TEntity, TId, TResponseDto> _service;
+    private IAdvertService service;
 
+
+    //baseCRUD iki kez yazılmış.
     public BaseCRUDController(IBaseService<TEntity, TId, TResponseDto> service)
     {
         _service = service;
