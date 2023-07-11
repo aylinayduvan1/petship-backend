@@ -23,7 +23,8 @@ public abstract class BaseCRUDController<TEntity, TId, TCreateDTO, TUpdateDTO, T
 
     [HttpGet]
     public virtual async Task<ActionResult<DataResult<IList<TResponseDto>>>> GetAll()
-        => await _service.GetAllAsync();
+    => await _service.GetAllAsync();
+
 
     [HttpGet]
     public virtual async Task<ActionResult<DataResult<TResponseDto>>> GetById(TId id)

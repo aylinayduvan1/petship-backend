@@ -9,6 +9,6 @@ namespace Business.Models.Response
     public class CategoryInfoDTO
     {
         public string category_name { get; set; } = default!;
-        public byte[] category_img { get; set; }
+        public string category_img { get; set; }
     }
 }

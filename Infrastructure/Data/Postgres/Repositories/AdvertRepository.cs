@@ -22,6 +22,14 @@ namespace Infrastructure.Data.Postgres.Repositories
                 .Where(Advert => Advert.Id == id)
                 .ToListAsync();
         }
+        public async Task<IList<Advert>> GetAllAsync(Expression<Func<Advert, bool>>? filter = null)
+        {
+            var advert = PostgresContext.Set<Advert>();
+            return filter == null
+                ? await advert.ToListAsync()
+                : await advert.Where(filter)
+                .ToListAsync();
+        }
 
     }
 }

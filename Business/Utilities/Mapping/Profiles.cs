@@ -16,9 +16,11 @@ public class Profiles : AutoMapper.Profile
         //eklenenler
         CreateMap<AdvertCreateDTO, Advert>();
         CreateMap<AdvertUpdateDTO, Advert>();
+
         CreateMap<CategoryCreateDTO,Categories>();
         CreateMap<CategoryUpdateDTO,Categories >();
-        CreateMap<CategoryInfoDTO, Categories>();
+        //Categories,CategoryInfoDTO yerini kerim değişitridi ve çalıştı..
+        CreateMap<Categories,CategoryInfoDTO>();
 
     }
 }

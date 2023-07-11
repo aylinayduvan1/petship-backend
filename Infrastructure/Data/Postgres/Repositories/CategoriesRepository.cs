@@ -3,9 +3,11 @@ using Infrastructure.Data.Postgres.EntityFramework;
 using Infrastructure.Data.Postgres.Repositories.Base;
 using Infrastructure.Data.Postgres.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,18 +19,20 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         public CategoriesRepository(PostgresContext postgresContext) : base(postgresContext)
         {
-
         }
 
-        public async Task<IList<Categories>> GetWithCategoriesAsync(int id)
+        public async Task<IList<Categories>> GetAllAsync(Expression<Func<Categories, bool>>? filter = null)
         {
-            return await PostgresContext.Categories
-                .Include(Categories=> Categories.Id)
-                .Where(Categories => Categories.Id == id)
+            var categories = PostgresContext.Set<Categories>();
+            return filter == null
+                ? await categories.ToListAsync()
+                : await categories.Where(filter)
                 .ToListAsync();
         }
 
-
-       
+        public Task<IList<Categories>> GetWithCategoriesAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

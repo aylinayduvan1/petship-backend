@@ -257,9 +257,6 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.HasIndex("contact_id");
 
-                    b.HasIndex("user_surname")
-                        .IsUnique();
-
                     b.ToTable("User");
                 });
 

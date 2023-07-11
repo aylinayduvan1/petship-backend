@@ -100,5 +100,7 @@ public class AnimalRepository : Repository<Animal, int>, IAnimalRepository
     {
         throw new NotImplementedException();
     }
+
+
 }
 

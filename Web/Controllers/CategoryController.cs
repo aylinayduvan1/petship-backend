@@ -7,7 +7,7 @@ using Web.Controllers.Base;
 
 namespace Web.Controllers
 {
-    public class CategoryController : BaseCRUDController <Categories, int, CategoryCreateDTO, CategoryUpdateDTO, CategoryInfoDTO>
+    public class CategoryController : BaseCRUDController <Categories,int,CategoryCreateDTO,CategoryUpdateDTO,CategoryInfoDTO>
     {
        
         

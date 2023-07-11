@@ -180,12 +180,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_user_surname",
-                table: "User",
-                column: "user_surname",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserTokens_UserId",
                 table: "UserTokens",
                 column: "UserId");

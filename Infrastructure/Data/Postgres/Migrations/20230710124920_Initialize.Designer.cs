@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230710110141_Initialize")]
+    [Migration("20230710124920_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -259,9 +259,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("animal_id");
 
                     b.HasIndex("contact_id");
-
-                    b.HasIndex("user_surname")
-                        .IsUnique();
 
                     b.ToTable("User");
                 });
