@@ -8,7 +8,6 @@ namespace Business.Models.Request.Create
 {
     public class AdvertCreateDTO
     {
-        public int Id { get; set; }
         public int advert_no { get; set; } = default!;
         public string advert_date { get; set; } = default!;
         public string advert_title { get; set; } = default!;
