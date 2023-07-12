@@ -1,11 +1,17 @@
-﻿namespace Business.Models.Request.Update;
+﻿using Infrastructure.Data.Postgres.Entities;
+
+namespace Business.Models.Request.Update;
 
 public class UserUpdateDTO
 {
-    public string EducationSituation { get; set; } = default!;
     public string Email { get; set; } = default!;
-    public string FirstName { get; set; } = default!;
-    public bool Gender { get; set; } = default!;
-    public string Surname { get; set; } = default!;
+    public string UserName { get; set; } = default!;
     public string Password { get; set; } = default!;
+    public string user_surname { get; set; } = default!;
+    public string user_bdate { get; set; } = default!;
+    public string user_adress { get; set; } = default!;
+    public string user_sex { get; set; } = default!;
+    public string user_gsm { get; set; } = default!;
+    public bool animal_history { get; set; }
+    public bool animal_exist { get; set; }
 }
