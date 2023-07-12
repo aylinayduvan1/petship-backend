@@ -239,7 +239,8 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.Property<string>("user_sex")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(1)
+                        .HasColumnType("character varying(1)");
 
                     b.Property<string>("user_surname")
                         .IsRequired()
@@ -255,8 +256,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("animal_id");
 
                     b.HasIndex("contact_id");
-
-                    b.HasIndex("user_sex");
 
                     b.ToTable("User");
                 });

@@ -8,6 +8,7 @@ namespace Business.Models.Response
 {
         public class AdvertInfoDTO
     {
+        public int id { get; set; } = default!;
         public int advert_no { get; set; } = default!;
         public string advert_date { get; set; } = default!;
         public string advert_title { get; set; } = default!;
