@@ -15,7 +15,7 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
         RuleFor(x => x.Password).NotEmpty().WithName("Şifre").MinimumLength(8);
         RuleFor(x => x.user_surname).NotEmpty().WithName("Soyisim").MinimumLength(2);
         RuleFor(x => x.user_adress).NotEmpty().WithName("Adres").MinimumLength(1);
-        RuleFor(x => x.user_bdate).NotEmpty().WithName("Adres").MinimumLength(1);
+        RuleFor(x => x.user_bdate).NotEmpty().WithName("Doğum Günü").MinimumLength(1);
 
 
 
@@ -28,16 +28,16 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
 
         RuleFor(x => x.user_gsm).NotEmpty().WithName("Telefon Numarası").MinimumLength(8);
 
-
+        RuleFor(x => x.user_sex).NotNull().WithName("user_sex");
 
         RuleFor(x => x.animal_history)
-         .Must(x => x == false || x == true).WithMessage("Geçersiz hayvan geçmişi değeri.")
-         .WithName("animal_history");
-
+            .NotNull()
+            .WithName( "animal_history");
 
         RuleFor(x => x.animal_exist)
-          .Must(x => x == false || x == true).WithMessage("Geçersiz hayvan varlığı değeri.")
-          .WithName("animal_exist");
+            .NotNull()
+            .WithName("animal_exist");
+
 
 
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Models.Response
+namespace Business.Models.Request.Update
 {
-    public class CategoryInfoDTO
+    public class CategoryUpdateDTO
     {
         public string category_name { get; set; } = default!;
         public string category_img { get; set; }

@@ -23,14 +23,15 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         // IRepository<User, int> arabiriminden gelen GetAllAsync metodu uygulanıyor.
         // Bu metot, tüm kullanıcıları getirmek için filtreleme seçeneği sağlar.
-        async Task<IList<User>> Base.Interface.IRepository<User, int>.GetAllAsync(Expression<Func<User, bool>>? filter)
+        public async Task<IList<User>> GetAllAsync(Expression<Func<User, bool>>? filter = null)
         {
-            var query = PostgresContext.Set<User>();// User tablosunu sorguya dahil ediyoruz.
-
+            var user = PostgresContext.Set<User>();
             return filter == null
-                ? await query.ToListAsync() // Filtre yoksa, tüm kullanıcıları getiriyoruz.
-                : await query.Where(filter).ToListAsync(); // Filtre varsa, filtreye uyan kullanıcıları getiriyoruz.
+                ? await user.ToListAsync()
+                : await user.Where(filter)
+                .ToListAsync();
         }
+
 
         public async Task<User> GetByIdAsync(int id)
         {
@@ -78,7 +79,7 @@ namespace Infrastructure.Data.Postgres.Repositories
             }
         }
 
-        public async Task<List<User>> GetAllUsersAsync()
+        public async Task<List<User>> GetAllUserAsync()
         {
             // Tüm kullanıcıları getirmek için bu metodu kullanabilirsiniz.
             return await _context.User.ToListAsync();

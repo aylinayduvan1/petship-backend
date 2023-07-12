@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Postgres.EntityFramework.Configurations.Base
 {
+
     public abstract class Configuration<TEntity, TId> : IEntityTypeConfiguration<TEntity>
         where TEntity : Entity<TId>
     {

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230709105333_Initialize")]
+    [Migration("20230710124920_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -137,9 +137,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<byte[]>("category_img")
+                    b.Property<string>("category_img")
                         .IsRequired()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
                     b.Property<string>("category_name")
                         .IsRequired()
@@ -259,9 +259,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("animal_id");
 
                     b.HasIndex("contact_id");
-
-                    b.HasIndex("user_surname")
-                        .IsUnique();
 
                     b.ToTable("User");
                 });

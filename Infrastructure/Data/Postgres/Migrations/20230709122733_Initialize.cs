@@ -100,7 +100,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                     Password = table.Column<string>(type: "text", nullable: false),
                     user_surname = table.Column<string>(type: "text", nullable: false),
                     user_bdate = table.Column<string>(type: "text", nullable: false),
-                    user_sex = table.Column<string>(type: "character varying(1)", maxLength: 1, nullable: false),
+                    user_sex = table.Column<string>(type: "text", nullable: false),
                     animal_history = table.Column<bool>(type: "boolean", nullable: false),
                     animal_exist = table.Column<bool>(type: "boolean", nullable: false),
                     animal_id = table.Column<int>(type: "integer", nullable: true),
@@ -180,10 +180,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_user_surname",
+                name: "IX_User_user_sex",
                 table: "User",
-                column: "user_surname",
-                unique: true);
+                column: "user_sex");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserTokens_UserId",
