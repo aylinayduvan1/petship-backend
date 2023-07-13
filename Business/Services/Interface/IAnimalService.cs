@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services.Interface
 {
-    public interface IAnimalService : IBaseService<Animal,int,AdvertInfoDTO>
+    public interface IAnimalService : IBaseService<Animal,int,AnimalInfoDTO>
 
     {
     }
