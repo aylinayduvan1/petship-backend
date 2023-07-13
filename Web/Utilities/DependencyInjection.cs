@@ -22,6 +22,7 @@ public static class DependencyInjection
         serviceCollection.AddScoped<IUserService, UserService>();
         serviceCollection.AddScoped<IAdvertService, AdvertService>();
         serviceCollection.AddScoped<ICategoryService , CategoryService>();
+        serviceCollection.AddScoped<IAnimalService, AnimalService>();
     }
 
     public static void AddMySingleton(this IServiceCollection serviceCollection)
