@@ -5,7 +5,6 @@ using Business.Utilities.Mapping.Interface;
 using Infrastructure.Data.Postgres;
 using Infrastructure.Data.Postgres.Entities;
 using Infrastructure.Data.Postgres.Repositories.Base.Interface;
-using Infrastructure.Data.Postgres.Repositories.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class AdvertService : BaseService<Advert, int, AdvertInfoDTO>, IAdvertService
+    public class AnimalService : BaseService<Animal, int, AnimalInfoDTO>,IAnimalService
     {
-        public AdvertService(IUnitOfWork unitOfWork, IRepository<Advert, int> repository, IMapperHelper mapperHelper) : base(unitOfWork, repository, mapperHelper)
+        public AnimalService(IUnitOfWork unitOfWork, IRepository<Animal, int> repository, IMapperHelper mapperHelper) : base(unitOfWork, repository, mapperHelper)
         {
         }
     }
