@@ -17,7 +17,7 @@ namespace Business.Services
 {
     public class AnimalService : BaseService<Animal, int, AnimalInfoDTO>, IAnimalService
     {
-        public AnimalService(IUnitOfWork unitOfWork, IRepository<Animal, int> repository, IMapperHelper mapperHelper) : base(unitOfWork, repository, mapperHelper)
+        public AnimalService(IUnitOfWork unitOfWork, IMapperHelper mapperHelper) : base(unitOfWork, mapperHelper)
         {
         }
     }

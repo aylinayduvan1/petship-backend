@@ -15,12 +15,20 @@ public abstract class BaseService<TEntity, TId, TResponseDto> : IBaseService<TEn
     protected readonly IMapperHelper _mapperHelper;
     private readonly IRepository<TEntity, TId> _repository;
     protected readonly IUnitOfWork _unitOfWork;
+    private IUnitOfWork unitOfWork;
+    private IMapperHelper mapperHelper;
 
     public BaseService(IUnitOfWork unitOfWork, IRepository<TEntity, TId> repository, IMapperHelper mapperHelper)
     {
         _unitOfWork = unitOfWork;
         _repository = repository;
         _mapperHelper = mapperHelper;
+    }
+
+    protected BaseService(IUnitOfWork unitOfWork, IMapperHelper mapperHelper)
+    {
+        this.unitOfWork = unitOfWork;
+        this.mapperHelper = mapperHelper;
     }
 
     public virtual async Task<DataResult<TResponseDto>> GetByIdAsync(TId id)
