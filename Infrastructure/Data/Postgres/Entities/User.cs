@@ -26,7 +26,7 @@ public class User : Entity<int>
 
     public UserType UserType { get; set; }
     public Animal? Animal { get; set; }
-    public Advert? Advert { get; set; }
+    public List <Advert?>  Advert { get; set; }
     public Contact? Contact { get; set; }
 }
 

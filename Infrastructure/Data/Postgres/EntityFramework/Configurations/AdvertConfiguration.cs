@@ -21,6 +21,8 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.advert_date).IsRequired();
             builder.Property(x => x.advert_title).IsRequired();
             builder.Property(x => x.advert_text).IsRequired();
+            builder.Property(x => x.advert_img).IsRequired();
+
         }
     }
 }

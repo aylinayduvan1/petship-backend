@@ -82,7 +82,10 @@ namespace Infrastructure.Data.Postgres.Repositories
         public async Task<List<User>> GetAllUserAsync()
         {
             // Tüm kullanıcıları getirmek için bu metodu kullanabilirsiniz.
-            return await _context.User.ToListAsync();
+            return await _context.User
+                .Include(user => user.Advert).ToListAsync();
+                //.Include(user => user.Advert)
+                //.ToListAsync();  ekleyeceğimiz zaman böyle eleriz 
         }
     }
 }

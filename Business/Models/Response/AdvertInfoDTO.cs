@@ -14,5 +14,7 @@ namespace Business.Models.Response
         public string advert_title { get; set; } = default!;
         public string advert_text { get; set; } = default!;
         public bool situation { get; set; }
+        public string advert_img { get; set; } = default!;
+
     }
 }

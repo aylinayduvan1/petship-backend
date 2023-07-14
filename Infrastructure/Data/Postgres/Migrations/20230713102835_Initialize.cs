@@ -23,6 +23,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                     advert_title = table.Column<string>(type: "text", nullable: false),
                     advert_text = table.Column<string>(type: "text", nullable: false),
                     situation = table.Column<bool>(type: "boolean", nullable: false),
+                    advert_img = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)

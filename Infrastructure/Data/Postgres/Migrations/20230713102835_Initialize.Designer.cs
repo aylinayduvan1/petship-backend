@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230712103445_Initialize")]
+    [Migration("20230713102835_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -43,6 +43,10 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("advert_date")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("advert_img")
                         .IsRequired()
                         .HasColumnType("text");
 

@@ -43,6 +43,10 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("advert_img")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("advert_no")
                         .HasColumnType("integer");
 
