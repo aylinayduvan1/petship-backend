@@ -23,7 +23,6 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
 
 
             builder.Property(x => x.animal_id).IsRequired(false);
-            builder.Property(x => x.advert_id).IsRequired(false);
             builder.Property(x => x.PasswordSalt).IsRequired();
             builder.Property(x => x.PasswordHash).IsRequired();
             builder.Property(x => x.CreatedAt).IsRequired();
@@ -33,9 +32,8 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
                 .WithMany()
                 .HasForeignKey(x => x.animal_id);
 
-            builder.HasOne(x => x.Advert)
-                .WithMany()
-                .HasForeignKey(x => x.advert_id);
+            builder.HasMany(x => x.Advert)
+                .WithOne();
 
             builder.HasOne(x => x.Contact)
                 .WithMany()

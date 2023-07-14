@@ -13,27 +13,6 @@ namespace Infrastructure.Data.Postgres.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Advert",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    advert_no = table.Column<int>(type: "integer", nullable: false),
-                    advert_date = table.Column<string>(type: "text", nullable: false),
-                    advert_title = table.Column<string>(type: "text", nullable: false),
-                    advert_text = table.Column<string>(type: "text", nullable: false),
-                    situation = table.Column<bool>(type: "boolean", nullable: false),
-                    advert_img = table.Column<string>(type: "text", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Advert", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Animal",
                 columns: table => new
                 {
@@ -105,7 +84,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     animal_history = table.Column<bool>(type: "boolean", nullable: false),
                     animal_exist = table.Column<bool>(type: "boolean", nullable: false),
                     animal_id = table.Column<int>(type: "integer", nullable: true),
-                    advert_id = table.Column<int>(type: "integer", nullable: true),
                     contact_id = table.Column<int>(type: "integer", nullable: true),
                     PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
@@ -118,11 +96,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_Advert_advert_id",
-                        column: x => x.advert_id,
-                        principalTable: "Advert",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_User_Animal_animal_id",
                         column: x => x.animal_id,
                         principalTable: "Animal",
@@ -131,6 +104,33 @@ namespace Infrastructure.Data.Postgres.Migrations
                         name: "FK_User_Contact_contact_id",
                         column: x => x.contact_id,
                         principalTable: "Contact",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Advert",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    advert_no = table.Column<int>(type: "integer", nullable: false),
+                    advert_date = table.Column<string>(type: "text", nullable: false),
+                    advert_title = table.Column<string>(type: "text", nullable: false),
+                    advert_text = table.Column<string>(type: "text", nullable: false),
+                    situation = table.Column<bool>(type: "boolean", nullable: false),
+                    advert_img = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Advert", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Advert_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
                         principalColumn: "Id");
                 });
 
@@ -160,9 +160,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_advert_id",
-                table: "User",
-                column: "advert_id");
+                name: "IX_Advert_UserId",
+                table: "Advert",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_animal_id",
@@ -190,6 +190,9 @@ namespace Infrastructure.Data.Postgres.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Advert");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
@@ -197,9 +200,6 @@ namespace Infrastructure.Data.Postgres.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
-
-            migrationBuilder.DropTable(
-                name: "Advert");
 
             migrationBuilder.DropTable(
                 name: "Animal");

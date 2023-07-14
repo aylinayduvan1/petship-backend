@@ -39,6 +39,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("advert_date")
                         .IsRequired()
                         .HasColumnType("text");
@@ -62,6 +65,8 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("advert_no")
                         .IsUnique();
@@ -222,9 +227,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("advert_id")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("animal_exist")
                         .HasColumnType("boolean");
 
@@ -255,8 +257,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("advert_id");
-
                     b.HasIndex("animal_id");
 
                     b.HasIndex("contact_id");
@@ -282,12 +282,15 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.ToTable("UserTokens");
                 });
 
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Advert", b =>
+                {
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.User", null)
+                        .WithMany("Advert")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
                 {
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.Advert", "Advert")
-                        .WithMany()
-                        .HasForeignKey("advert_id");
-
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Animal", "Animal")
                         .WithMany()
                         .HasForeignKey("animal_id");
@@ -295,8 +298,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasOne("Infrastructure.Data.Postgres.Entities.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("contact_id");
-
-                    b.Navigation("Advert");
 
                     b.Navigation("Animal");
 
@@ -312,6 +313,11 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
+                {
+                    b.Navigation("Advert");
                 });
 #pragma warning restore 612, 618
         }
