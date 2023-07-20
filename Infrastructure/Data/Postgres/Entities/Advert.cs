@@ -17,5 +17,12 @@ namespace Infrastructure.Data.Postgres.Entities
         public bool situation { get; set; }
         public string advert_img { get; set; }
 
+        public int category_id { get; set; }
+
+
+
+        public Animal? Animal { get; set; }
+        public Categories? Categories { get; set; }
+
     }
 }

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230714134859_Initialize")]
+    [Migration("20230720100548_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -64,6 +64,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("category_id")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("situation")
                         .HasColumnType("boolean");
 
@@ -72,6 +75,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("UserId");
 
                     b.HasIndex("advert_no")
+                        .IsUnique();
+
+                    b.HasIndex("category_id")
                         .IsUnique();
 
                     b.ToTable("Advert");
@@ -93,6 +99,9 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("advert_id")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("animal_chip")
                         .HasColumnType("boolean");
@@ -126,6 +135,9 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("advert_id")
+                        .IsUnique();
+
                     b.ToTable("Animal");
                 });
 
@@ -146,6 +158,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("advert_id")
+                        .HasColumnType("integer");
+
                     b.Property<string>("category_img")
                         .IsRequired()
                         .HasColumnType("text");
@@ -159,7 +174,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Contact", b =>
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,32 +185,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<string>("Adress")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("gsm")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contact");
-                });
-
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -236,11 +225,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<bool>("animal_history")
                         .HasColumnType("boolean");
 
-                    b.Property<int?>("animal_id")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("contact_id")
-                        .HasColumnType("integer");
+                    b.Property<string>("gsm")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("user_bdate")
                         .IsRequired()
@@ -259,10 +246,6 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.HasIndex("Email")
                         .IsUnique();
-
-                    b.HasIndex("animal_id");
-
-                    b.HasIndex("contact_id");
 
                     b.ToTable("User");
                 });
@@ -290,21 +273,25 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasOne("Infrastructure.Data.Postgres.Entities.User", null)
                         .WithMany("Advert")
                         .HasForeignKey("UserId");
+
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.Categories", "Categories")
+                        .WithOne("Advert")
+                        .HasForeignKey("Infrastructure.Data.Postgres.Entities.Advert", "category_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categories");
                 });
 
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Animal", b =>
                 {
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.Animal", "Animal")
-                        .WithMany()
-                        .HasForeignKey("animal_id");
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.Advert", "Advert")
+                        .WithOne("Animal")
+                        .HasForeignKey("Infrastructure.Data.Postgres.Entities.Animal", "advert_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("contact_id");
-
-                    b.Navigation("Animal");
-
-                    b.Navigation("Contact");
+                    b.Navigation("Advert");
                 });
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.UserToken", b =>
@@ -316,6 +303,16 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Advert", b =>
+                {
+                    b.Navigation("Animal");
+                });
+
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Categories", b =>
+                {
+                    b.Navigation("Advert");
                 });
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.User", b =>

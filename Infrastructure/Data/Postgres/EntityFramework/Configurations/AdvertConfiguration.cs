@@ -23,6 +23,11 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.advert_text).IsRequired();
             builder.Property(x => x.advert_img).IsRequired();
 
+
+            builder.HasOne(b => b.Categories)
+                 .WithOne(b => b.Advert)
+                 .HasForeignKey<Advert>(b => b.category_id);
+
         }
     }
 }

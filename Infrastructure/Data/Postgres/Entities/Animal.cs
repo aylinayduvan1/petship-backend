@@ -16,6 +16,12 @@ public class Animal : Entity<int>
     public bool animal_passion { get; set; }
     public byte[] animal_img { get; set; }
 
+    public int advert_id { get; set; }
+
+    public Advert? Advert { get; set; }
+
+
+
 }
 
 

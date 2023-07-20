@@ -22,22 +22,13 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.animal_history).IsRequired();
 
 
-            builder.Property(x => x.animal_id).IsRequired(false);
+            
             builder.Property(x => x.PasswordSalt).IsRequired();
             builder.Property(x => x.PasswordHash).IsRequired();
             builder.Property(x => x.CreatedAt).IsRequired();
             builder.Property(x => x.IsDeleted).IsRequired();
 
-            builder.HasOne(x => x.Animal)
-                .WithMany()
-                .HasForeignKey(x => x.animal_id);
-
-            builder.HasMany(x => x.Advert)
-                .WithOne();
-
-            builder.HasOne(x => x.Contact)
-                .WithMany()
-                .HasForeignKey(x => x.contact_id);
+           
 
             builder.Property(x => x.UserType)
                 .IsRequired()

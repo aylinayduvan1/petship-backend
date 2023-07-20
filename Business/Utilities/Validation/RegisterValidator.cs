@@ -14,7 +14,7 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
         //RuleFor(x => x.FullName).NotEmpty().WithName("İsim Soyisim").MinimumLength(5);
         RuleFor(x => x.Password).NotEmpty().WithName("Şifre").MinimumLength(8);
         RuleFor(x => x.user_surname).NotEmpty().WithName("Soyisim").MinimumLength(2);
-        RuleFor(x => x.user_adress).NotEmpty().WithName("Adres").MinimumLength(1);
+        RuleFor(x => x.Adress).NotEmpty().WithName("Adres").MinimumLength(1);
         RuleFor(x => x.user_bdate).NotEmpty().WithName("Doğum Günü").MinimumLength(1);
 
 
@@ -26,7 +26,7 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
         //.WithName("user_bdate");
 
 
-        RuleFor(x => x.user_gsm).NotEmpty().WithName("Telefon Numarası").MinimumLength(8);
+        RuleFor(x => x.gsm).NotEmpty().WithName("Telefon Numarası").MinimumLength(8);
 
         RuleFor(x => x.user_sex).NotNull().WithName("user_sex");
 

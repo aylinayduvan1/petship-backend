@@ -50,9 +50,7 @@ public class AuthService : IAuthService
                 status: ResultStatus.Invalid);
 
 
-        if (await _unitOfWork.Contacts.FirstOrDefaultAsync(u => u.gsm == registerDto.user_gsm) != null)
-            return new DataResult<Utilities.Security.Auth.Jwt.Token>(message: Messages.GsmWrong,
-                status: ResultStatus.Invalid);
+       
 
     
       

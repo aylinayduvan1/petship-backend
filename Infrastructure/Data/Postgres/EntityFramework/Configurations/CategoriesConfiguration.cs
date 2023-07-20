@@ -17,7 +17,11 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.category_name).IsRequired();
             builder.Property(x => x.category_img).IsRequired();
+
+
+
             
+
         }
     }
 }

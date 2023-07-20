@@ -22,6 +22,11 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.animal_type).IsRequired();
             builder.Property(x => x.animal_img).IsRequired();
 
+
+            builder.HasOne(a => a.Advert) // Advert sınıfının Animal özelliğiyle ilişkili olduğunu belirtiyoruz
+                 .WithOne(a => a.Animal) // Hayvanın birden fazla ilana ait olmadığını belirtiyoruz
+                 .HasForeignKey<Animal>(a => a.advert_id); // İlişkiyi sağlayan sütunun Advert sınıfının AnimalId özelliği
+
         }
     }
 }
