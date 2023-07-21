@@ -14,5 +14,7 @@ namespace Business.Models.Request.Create
         public string advert_text { get; set; } = default!;
         public string advert_img { get; set; } = default!;
 
+        public int category_id { get; set;}
+
     }
 }
