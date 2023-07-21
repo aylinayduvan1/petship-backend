@@ -12,6 +12,8 @@ public class Profiles : AutoMapper.Profile
     {
         CreateMap<RegisterDto, User>();
         CreateMap<User, UserProfileDto>();
+        CreateMap<UserUpdateDTO, User>();
+
         CreateMap<Advert, AdvertInfoDTO>();
         //eklenenler
         CreateMap<AdvertCreateDTO, Advert>();

@@ -34,6 +34,6 @@ public class MapperHelper : IMapperHelper
 
     public void Map(object? source, object? destination)
     {
-        throw new NotImplementedException();
+        _mapper.Map(source, destination);
     }
 }
