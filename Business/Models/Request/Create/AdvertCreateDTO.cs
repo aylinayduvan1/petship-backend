@@ -8,11 +8,11 @@ namespace Business.Models.Request.Create
 {
     public class AdvertCreateDTO
     {
-        public int advert_no { get; set; } = default!;
-        public string advert_date { get; set; } = default!;
-        public string advert_title { get; set; } = default!;
-        public string advert_text { get; set; } = default!;
-        public string advert_img { get; set; } = default!;
+        public int Advert_no { get; set; } = default!;
+        public string Advert_date { get; set; } = default!;
+        public string Advert_title { get; set; } = default!;
+        public string Advert_text { get; set; } = default!;
+        public string Advert_img { get; set; } = default!;
 
     }
 }

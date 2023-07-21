@@ -15,8 +15,8 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
         public override void Configure(EntityTypeBuilder<Categories> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.category_name).IsRequired();
-            builder.Property(x => x.category_img).IsRequired();
+            builder.Property(x => x.Category_name).IsRequired();
+            builder.Property(x => x.Category_img).IsRequired();
 
 
 
