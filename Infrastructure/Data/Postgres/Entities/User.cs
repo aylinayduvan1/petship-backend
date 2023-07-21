@@ -11,13 +11,13 @@ public class User : Entity<int>
     public string Email { get; set; } = default!;
 
     public string Adress { get; set; }
-    public string gsm { get; set; }
+    public string Gsm { get; set; }
     public string Password { get; set; }
-    public string user_surname { get; set; } = default!;
-    public string user_bdate { get; set; }
-    public string user_sex { get; set; } = default!;
-    public bool animal_history { get; set; }
-    public bool animal_exist { get; set; }
+    public string User_surname { get; set; } = default!;
+    public string User_bdate { get; set; }
+    public string User_sex { get; set; } = default!;
+    public bool Animal_history { get; set; }
+    public bool Animal_exist { get; set; }
     
    
    

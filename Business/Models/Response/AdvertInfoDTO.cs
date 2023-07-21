@@ -9,12 +9,12 @@ namespace Business.Models.Response
         public class AdvertInfoDTO
     {
         public int id { get; set; } = default!;
-        public int advert_no { get; set; } = default!;
-        public string advert_date { get; set; } = default!;
-        public string advert_title { get; set; } = default!;
-        public string advert_text { get; set; } = default!;
-        public bool situation { get; set; }
-        public string advert_img { get; set; } = default!;
+        public int Advert_no { get; set; } = default!;
+        public string Advert_date { get; set; } = default!;
+        public string Advert_title { get; set; } = default!;
+        public string Advert_text { get; set; } = default!;
+        public bool Situation { get; set; }
+        public string Advert_img { get; set; } = default!;
 
     }
 }

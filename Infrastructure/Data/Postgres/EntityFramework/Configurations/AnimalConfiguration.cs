@@ -16,16 +16,16 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
         public override void Configure(EntityTypeBuilder<Animal> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.animal_name).IsRequired();
-            builder.Property(x => x.animal_year).IsRequired();
-            builder.Property(x => x.animal_sex).IsRequired().HasMaxLength(1);
-            builder.Property(x => x.animal_type).IsRequired();
-            builder.Property(x => x.animal_img).IsRequired();
+            builder.Property(x => x.Animal_name).IsRequired();
+            builder.Property(x => x.Animal_year).IsRequired();
+            builder.Property(x => x.Animal_sex).IsRequired().HasMaxLength(1);
+            builder.Property(x => x.Animal_type).IsRequired();
+            builder.Property(x => x.Animal_img).IsRequired();
 
 
             builder.HasOne(a => a.Advert) // Advert sınıfının Animal özelliğiyle ilişkili olduğunu belirtiyoruz
                  .WithOne(a => a.Animal) // Hayvanın birden fazla ilana ait olmadığını belirtiyoruz
-                 .HasForeignKey<Animal>(a => a.advert_id); // İlişkiyi sağlayan sütunun Advert sınıfının AnimalId özelliği
+                 .HasForeignKey<Animal>(a => a.Advert_id); // İlişkiyi sağlayan sütunun Advert sınıfının AnimalId özelliği
 
         }
     }

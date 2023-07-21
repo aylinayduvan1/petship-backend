@@ -9,10 +9,10 @@ namespace Infrastructure.Data.Postgres.Entities
 {
     public class Categories : Entity<int>
     {
-        public string category_name { get; set; } = default!;
-        public string category_img { get; set; } = default!;
+        public string Category_name { get; set; } = default!;
+        public string Category_img { get; set; } = default!;
 
-        public int advert_id { get; set; }
+        public int Advert_id { get; set; }
 
         public Advert? Advert { get; set; }
     }

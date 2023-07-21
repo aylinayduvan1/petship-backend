@@ -8,7 +8,7 @@ namespace Business.Models.Request.Create
 {
     public class CategoryCreateDTO
     {
-        public string category_name { get; set; } = default!;
-        public string category_img { get; set; } = default!;
+        public string Category_name { get; set; } = default!;
+        public string Category_img { get; set; } = default!;
     }
 }

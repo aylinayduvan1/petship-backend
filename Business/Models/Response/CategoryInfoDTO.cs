@@ -9,7 +9,7 @@ namespace Business.Models.Response
     public class CategoryInfoDTO
     {
         public int Id { get; set; }
-        public string category_name { get; set; } = default!;
-        public string category_img { get; set; }
+        public string Category_name { get; set; } = default!;
+        public string Category_img { get; set; }
     }
 }

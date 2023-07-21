@@ -363,3 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 /Infrastructure/Data/Postgres/Migrations/20230710104516_Initialize.cs
 /Infrastructure/Data/Postgres/Migrations/20230710104516_Initialize.Designer.cs
+/Web/appsettings.Development.json
+/Web/appsettings.Production.json
+/Infrastructure/Data/Postgres/Migrations/20230721084325_Initialize.Designer.cs
+/Infrastructure/Data/Postgres/Migrations/PostgresContextModelSnapshot.cs
+/Infrastructure/Data/Postgres/Migrations/20230721084325_Initialize.cs
