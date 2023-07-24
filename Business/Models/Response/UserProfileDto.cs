@@ -14,6 +14,8 @@ public class UserProfileDto
     public bool Animal_history { get; set; } = default!;
 
     public bool Animal_exist { get; set; } = default!;
+
+    public string Adress { get; set; } = default!;
     
     public string Gsm { get; set;} = default!;  
 
