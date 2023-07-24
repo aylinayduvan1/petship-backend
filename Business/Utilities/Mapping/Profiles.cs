@@ -24,5 +24,10 @@ public class Profiles : AutoMapper.Profile
         //Categories,CategoryInfoDTO yerini kerim değişitridi ve çalıştı..
         CreateMap<Categories,CategoryInfoDTO>();
 
+
+        CreateMap<Animal , AnimalInfoDTO>();
+        CreateMap<AnimalCreateDTO, Animal>();
+        CreateMap<AnimalUpdateDTO, Animal>();
+
     }
 }
