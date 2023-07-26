@@ -13,6 +13,6 @@ namespace Web.Controllers
     {
         public AdvertController(IAdvertService service) : base(service)
         {
-        }
+        }  
     }
 }

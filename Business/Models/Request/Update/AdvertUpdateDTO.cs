@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Business.Models.Request.Update
         public string advert_text { get; set; } = default!;
         public bool situation { get; set; }
         public string advert_img { get; set; } = default!;
+
+
+        //public AnimalInfoDTO Animal { get; set; }
+        //public CategoryInfoDTO Categories { get; set; }
 
     }
 }

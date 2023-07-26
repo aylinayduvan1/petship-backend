@@ -23,7 +23,8 @@ namespace Infrastructure.Data.Postgres.Repositories
 
         public async Task<IList<Categories>> GetAllAsync(Expression<Func<Categories, bool>>? filter = null)
         {
-            var categories = PostgresContext.Set<Categories>();
+            var categories = PostgresContext.Set<Categories>()
+              .Include(categories => categories.Advert);
             return filter == null
                 ? await categories.ToListAsync()
                 : await categories.Where(filter)

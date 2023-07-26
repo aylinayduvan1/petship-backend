@@ -33,6 +33,10 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.UserType)
                 .IsRequired()
                 .HasConversion<string>();
+
+            builder.HasMany(b => b.Advert)
+                .WithOne(b => b.User)
+                .HasForeignKey(b => b.User_id);
         }
     }
 }

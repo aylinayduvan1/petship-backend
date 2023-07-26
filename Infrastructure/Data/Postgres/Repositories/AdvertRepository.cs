@@ -18,18 +18,24 @@ namespace Infrastructure.Data.Postgres.Repositories
         public async Task<IList<Advert>> GetAdvertByIdAsync(int id)
         {
             return await PostgresContext.Set<Advert>()
-                .Include(Advert => Advert.Id)
+                  .Include(Advert => Advert.Animal)
+                  .Include(Advert => Advert.Categories)
+                   .Include(Advert => Advert.User)
+
                 .Where(Advert => Advert.Id == id)
                 .ToListAsync();
         }
         public async Task<IList<Advert>> GetAllAsync(Expression<Func<Advert, bool>>? filter = null)
         {
-            var advert = PostgresContext.Set<Advert>();
-            return filter == null
-                ? await advert.ToListAsync()
-                : await advert.Where(filter)
-                .ToListAsync();
+            var advert = PostgresContext.Set<Advert>()
+                  .Include(Advert => Advert.Animal)
+                  .Include(Advert => Advert.User)
+                  .Include(Advert => Advert.Categories);
+                    return filter == null
+                        ? await advert.ToListAsync()
+                        : await advert.Where(filter)
+                        .ToListAsync();
         }
-
+        
     }
 }

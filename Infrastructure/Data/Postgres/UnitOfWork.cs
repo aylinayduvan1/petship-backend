@@ -27,7 +27,6 @@ public class UnitOfWork : IUnitOfWork
     public IUserTokenRepository UserTokens => _userTokenRepository ??= new UserTokenRepository(_postgresContext);
     public ICategoriesRepository Categories => _categoriesRepository ??= new CategoriesRepository(_postgresContext);
 
-
     public IAnimalRepository Animals => _animalRepository ??= new AnimalRepository(_postgresContext);
 
     public IAdvertRepository Adverties => _advertRepository ??= new AdvertRepository(_postgresContext);

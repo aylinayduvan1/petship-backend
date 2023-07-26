@@ -16,5 +16,16 @@ namespace Business.Models.Response
         public bool Situation { get; set; }
         public string Advert_img { get; set; } = default!;
 
+
+        // include atılmayacaksa bu id'lerden hangileriyle ilişili olduğuna bakılır..
+        public int Category_id { get; set; }
+        public int User_id { get; set; }
+        public int Animal_id { get; set; }
+
+
+        public UserProfileDto? User { get; set; }
+        public AnimalInfoDTO ?Animal { get; set; }
+        public CategoryInfoDTO ?Categories { get; set; }
+
     }
 }

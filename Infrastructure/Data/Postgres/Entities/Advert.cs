@@ -18,9 +18,11 @@ namespace Infrastructure.Data.Postgres.Entities
         public string Advert_img { get; set; }
 
         public int Category_id { get; set; }
+        public int Animal_id { get; set; }
+        public int User_id { get; set; }
 
 
-
+        public User? User { get; set; } 
         public Animal? Animal { get; set; }
         public Categories? Categories { get; set; }
 

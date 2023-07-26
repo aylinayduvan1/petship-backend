@@ -19,8 +19,6 @@ public class User : Entity<int>
     public bool Animal_history { get; set; }
     public bool Animal_exist { get; set; }
     
-   
-   
 
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;

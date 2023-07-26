@@ -12,8 +12,6 @@ namespace Infrastructure.Data.Postgres.Entities
         public string Category_name { get; set; } = default!;
         public string Category_img { get; set; } = default!;
 
-        public int Advert_id { get; set; }
-
-        public Advert? Advert { get; set; }
+        public List<Advert?> Advert { get; set; }
     }
 }

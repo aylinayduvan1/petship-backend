@@ -21,5 +21,7 @@ public class UserProfileDto
 
     public string Email { get; set; } = default!;
     public UserType UserType { get; set; }
+
+    public List<AdvertInfoDTO?> Advert { get; set; }
 }
 

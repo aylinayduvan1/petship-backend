@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure.Data.Postgres.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,8 @@ namespace Business.Models.Response
         public int Id { get; set; }
         public string Category_name { get; set; } = default!;
         public string Category_img { get; set; }
+
+        public List<AdvertInfoDTO> Advert { get; set; }
+
     }
 }

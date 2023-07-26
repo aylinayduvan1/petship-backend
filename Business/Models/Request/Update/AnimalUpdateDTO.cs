@@ -17,6 +17,6 @@ namespace Business.Models.Request.Update
         public bool Animal_passion { get; set; }
         public string Animal_img { get; set; }
 
-        public int Advert_id { get; set; }
+        //public int Advert_id { get; set; }
     }
 }

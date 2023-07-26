@@ -25,9 +25,12 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
 
 
             builder.HasOne(b => b.Categories)
-                 .WithOne(b => b.Advert)
-                 .HasForeignKey<Advert>(b => b.Category_id);
-
+                 .WithMany(b => b.Advert)
+                 .HasForeignKey (b => b.Category_id);
+            builder.HasOne(b => b.Animal)
+                .WithOne(b => b.Advert)
+                .HasForeignKey<Advert>(b => b.Animal_id);
+            
         }
     }
 }

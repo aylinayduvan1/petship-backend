@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,15 @@ namespace Business.Models.Request.Create
         public string Advert_text { get; set; } = default!;
         public string Advert_img { get; set; } = default!;
 
-        public int category_id { get; set;}
+        public int Category_id { get; set;}
+        public int Animal_id { get; set; }
+        public int User_id { get; set; }
+
+
+
+        // public AnimalInfoDTO Animal { get; set; }
+        //public CategoryInfoDTO Categories { get; set; }
+        //public UserInfoDTO User { get; set; }
 
     }
 }

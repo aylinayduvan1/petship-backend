@@ -18,7 +18,12 @@ namespace Infrastructure.Data.Postgres.EntityFramework.Configurations
             builder.Property(x => x.Category_name).IsRequired();
             builder.Property(x => x.Category_img).IsRequired();
 
-
+           
+            builder.HasMany(b => b.Advert)
+                .WithOne(b => b.Categories)
+                .HasForeignKey(b => b.Category_id); 
+            //tekil olanın id si
+           
 
             
 

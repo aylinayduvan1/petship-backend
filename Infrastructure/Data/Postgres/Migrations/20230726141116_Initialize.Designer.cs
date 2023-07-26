@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Postgres.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20230721131459_Initialize")]
+    [Migration("20230726141116_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -52,6 +52,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Animal_id")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Category_id")
                         .HasColumnType("integer");
 
@@ -67,7 +70,7 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("User_id")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -75,10 +78,12 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.HasIndex("Advert_no")
                         .IsUnique();
 
-                    b.HasIndex("Category_id")
+                    b.HasIndex("Animal_id")
                         .IsUnique();
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("Category_id");
+
+                    b.HasIndex("User_id");
 
                     b.ToTable("Advert");
                 });
@@ -135,9 +140,6 @@ namespace Infrastructure.Data.Postgres.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Advert_id")
-                        .IsUnique();
-
                     b.ToTable("Animal");
                 });
 
@@ -148,9 +150,6 @@ namespace Infrastructure.Data.Postgres.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Advert_id")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Category_img")
                         .IsRequired()
@@ -270,28 +269,29 @@ namespace Infrastructure.Data.Postgres.Migrations
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Advert", b =>
                 {
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.Categories", "Categories")
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.Animal", "Animal")
                         .WithOne("Advert")
-                        .HasForeignKey("Infrastructure.Data.Postgres.Entities.Advert", "Category_id")
+                        .HasForeignKey("Infrastructure.Data.Postgres.Entities.Advert", "Animal_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.User", null)
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.Categories", "Categories")
                         .WithMany("Advert")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("Category_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.Data.Postgres.Entities.User", "User")
+                        .WithMany("Advert")
+                        .HasForeignKey("User_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
 
                     b.Navigation("Categories");
-                });
 
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Animal", b =>
-                {
-                    b.HasOne("Infrastructure.Data.Postgres.Entities.Advert", "Advert")
-                        .WithOne("Animal")
-                        .HasForeignKey("Infrastructure.Data.Postgres.Entities.Animal", "Advert_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Advert");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.UserToken", b =>
@@ -305,9 +305,9 @@ namespace Infrastructure.Data.Postgres.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Advert", b =>
+            modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Animal", b =>
                 {
-                    b.Navigation("Animal");
+                    b.Navigation("Advert");
                 });
 
             modelBuilder.Entity("Infrastructure.Data.Postgres.Entities.Categories", b =>

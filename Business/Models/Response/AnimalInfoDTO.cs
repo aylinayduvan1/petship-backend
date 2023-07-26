@@ -18,5 +18,8 @@ namespace Business.Models.Response
         public string Animal_img { get; set; }
 
         public int Advert_id { get; set; }
+
+        public AdvertInfoDTO Advert { get; set; }
+
     }
 }

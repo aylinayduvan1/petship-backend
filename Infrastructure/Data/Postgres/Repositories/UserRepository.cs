@@ -25,7 +25,10 @@ namespace Infrastructure.Data.Postgres.Repositories
         // Bu metot, tüm kullanıcıları getirmek için filtreleme seçeneği sağlar.
         public async Task<IList<User>> GetAllAsync(Expression<Func<User, bool>>? filter = null)
         {
-            var user = PostgresContext.Set<User>();
+            var user = PostgresContext.Set<User>()
+            .Include(user => user.Advert);
+            //.ThenInclude(advert => advert.Animal); iç içe tablo çağırmak için :)
+
             return filter == null
                 ? await user.ToListAsync()
                 : await user.Where(filter)
