@@ -6,7 +6,7 @@ namespace Infrastructure.Data.Postgres.Entities;
 
 public class User : Entity<int>
 {
-    private UserType userType;
+    
 
     public string UserName { get; set; } = default!;
     public string Email { get; set; } = default!;
@@ -24,7 +24,6 @@ public class User : Entity<int>
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
 
-    public UserType UserType { get => userType; set => userType = value; }
 
     public List <Advert?>  Advert { get; set; }
     
