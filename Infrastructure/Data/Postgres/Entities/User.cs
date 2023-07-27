@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Infrastructure.Data.Postgres.Entities.Base;
 //using Infrastructure.Data.Postgres.Entities.Infrastructure.Data.Postgres.Entities;
 
@@ -24,7 +25,9 @@ public class User : Entity<int>
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
 
+    public UserType UserType { get; set; }
 
+    [MaxLength(3, ErrorMessage = "Sadece 3 hayvan ekleyebilirsiniz.")]
     public List <Advert?>  Advert { get; set; }
     
 }
