@@ -6,7 +6,8 @@ namespace Infrastructure.Data.Postgres.Entities;
 
 public class User : Entity<int>
 {
-    
+    private UserType userType;
+
     public string UserName { get; set; } = default!;
     public string Email { get; set; } = default!;
 
@@ -18,19 +19,19 @@ public class User : Entity<int>
     public string User_sex { get; set; } = default!;
     public bool Animal_history { get; set; }
     public bool Animal_exist { get; set; }
-    
 
+    
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
 
-    public UserType UserType { get; set; }
-    
+    public UserType UserType { get => userType; set => userType = value; }
+
     public List <Advert?>  Advert { get; set; }
     
 }
 
 public enum UserType
 {
-    Admin,
-    User, 
+    User,
+    Admin
 }
